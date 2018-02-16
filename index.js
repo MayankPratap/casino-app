@@ -25,6 +25,7 @@ $(document).ready(function(){
 
 function loadCurrentBetDetails(){
 
+
 	contractInstance.numberOfBets.call(function(error,result){
 
 		if(error){
@@ -88,6 +89,7 @@ function loadCurrentBetDetails(){
 
 	});
 
+
 	
 }
 
@@ -98,6 +100,7 @@ $('#num-1').click(function(){
 	console.log(amount);
 
 	amount=Number(web3.toWei(amount,'ether')); // take input from user in ether and convert it to Wei
+
 	contractInstance.minimumBet.call(function(error,result){
 
 		if(error){
@@ -169,6 +172,7 @@ $('#num-2').click(function(){
 
 	});
 	
+
 });
 
 $('#num-3').click(function(){
@@ -204,6 +208,7 @@ $('#num-3').click(function(){
 		}
 		
 	});
+
 });
 
 $('#num-4').click(function(){
@@ -211,6 +216,7 @@ $('#num-4').click(function(){
 	let amount=$('#amount').val();
 	console.log(amount);
 	amount=Number(web3.toWei(amount,'ether')); // take input from user in ether and convert it to Wei
+
 	
 	contractInstance.minimumBet.call(function(error,result){
 
@@ -244,6 +250,7 @@ $('#num-4').click(function(){
 	});
 
 
+
 });
 
 $('#num-5').click(function(){
@@ -251,7 +258,7 @@ $('#num-5').click(function(){
 	let amount=$('#amount').val();
 	console.log(amount);
 	amount=Number(web3.toWei(amount,'ether')); // take input from user in ether and convert it to Wei
-	
+
 	contractInstance.minimumBet.call(function(error,result){
 
 		if(error){
@@ -283,6 +290,7 @@ $('#num-5').click(function(){
 
 	});
 
+
 });
 
 $('#num-6').click(function(){
@@ -290,6 +298,7 @@ $('#num-6').click(function(){
 	let amount=$('#amount').val();
 	console.log(amount);
 	amount=Number(web3.toWei(amount,'ether')); // take input from user in ether and convert it to Wei
+
 
 	contractInstance.minimumBet.call(function(error,result){
 
@@ -323,6 +332,7 @@ $('#num-6').click(function(){
 	});
 
 
+
 });
 
 $('#num-7').click(function(){
@@ -330,6 +340,7 @@ $('#num-7').click(function(){
 	let amount=$('#amount').val();
 	console.log(amount);
 	amount=Number(web3.toWei(amount,'ether')); // take input from user in ether and convert it to Wei
+
 	
 	contractInstance.minimumBet.call(function(error,result){
 
@@ -370,6 +381,7 @@ $('#num-8').click(function(){
 	let amount=$('#amount').val();
 	console.log(amount);
 	amount=Number(web3.toWei(amount,'ether')); // take input from user in ether and convert it to Wei
+
 	
 	contractInstance.minimumBet.call(function(error,result){
 
@@ -404,6 +416,7 @@ $('#num-8').click(function(){
 
 
 
+
 });
 
 $('#num-9').click(function(){
@@ -411,7 +424,7 @@ $('#num-9').click(function(){
 	let amount=$('#amount').val();
 	console.log(amount);
 	amount=Number(web3.toWei(amount,'ether')); // take input from user in ether and convert it to Wei
-	
+
 	contractInstance.minimumBet.call(function(error,result){
 
 		if(error){
@@ -442,6 +455,7 @@ $('#num-9').click(function(){
 		
 
 	});
+
 });
 
 $('#num-10').click(function(){
@@ -449,7 +463,7 @@ $('#num-10').click(function(){
 	let amount=$('#amount').val();
 	console.log(amount);
 	amount=Number(web3.toWei(amount,'ether')); // take input from user in ether and convert it to Wei
-	
+
 	contractInstance.minimumBet.call(function(error,result){
 
 		if(error){
@@ -480,6 +494,7 @@ $('#num-10').click(function(){
 		
 
 	});
+
 
 });
 
