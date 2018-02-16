@@ -118,12 +118,29 @@ $('#num-1').click(function(){
 
 				let number=1;
 
-				contractInstance.bet(number,{from:web3.eth.accounts[0],value:amount,gas:3000000},function(err){
-					console.log(web3.eth.accounts[0]);
-					console.log("Error occured: "+err);
-					alert("You have already betted.. Please try in next turn");		
+				contractInstance.checkPlayerExists.call(web3.eth.accounts[0],function(err,res){
+
+					if(!err){
+
+						if(res===false){
+
+							contractInstance.bet(number,{from:web3.eth.accounts[0],value:amount,gas:3000000},function(err){
+							});
+
+						}else{
+
+							alert("You have already betted.. Please try in next round of game");								
+
+						}
+					}else{
+
+						console.log(err);
+
+					}
 
 				});
+
+				
 
 			}
 
@@ -158,10 +175,25 @@ $('#num-2').click(function(){
 
 				let number=2;
 
-				contractInstance.bet(number,{from:web3.eth.accounts[0],value:amount,gas:3000000},function(err){
-					console.log(web3.eth.accounts[0]);
-					console.log("Error occured: "+err);
-					alert("You have already betted.. Please try in next turn");		
+				contractInstance.checkPlayerExists.call(web3.eth.accounts[0],function(err,res){
+
+					if(!err){
+
+						if(res===false){
+
+							contractInstance.bet(number,{from:web3.eth.accounts[0],value:amount,gas:3000000},function(err){
+							});
+
+						}else{
+
+							alert("You have already betted.. Please try in next round of game");								
+
+						}
+					}else{
+
+						console.log(err);
+
+					}
 
 				});
 
@@ -198,12 +230,28 @@ $('#num-3').click(function(){
 
 				let number=3;
 
-				contractInstance.bet(number,{from:web3.eth.accounts[0],value:amount,gas:3000000},function(err){
-					console.log(web3.eth.accounts[0]);
-					console.log("Error occured: "+err);
-					alert("You have already betted.. Please try in next turn");		
+				contractInstance.checkPlayerExists.call(web3.eth.accounts[0],function(err,res){
+
+					if(!err){
+
+						if(res===false){
+
+							contractInstance.bet(number,{from:web3.eth.accounts[0],value:amount,gas:3000000},function(err){
+							});
+
+						}else{
+
+							alert("You have already betted.. Please try in next round of game");								
+
+						}
+					}else{
+
+						console.log(err);
+
+					}
 
 				});
+
 			}
 		}
 		
@@ -235,10 +283,25 @@ $('#num-4').click(function(){
 
 				let number=4;
 
-				contractInstance.bet(number,{from:web3.eth.accounts[0],value:amount,gas:3000000},function(err){
-					console.log(web3.eth.accounts[0]);
-					console.log("Error occured: "+err);
-					alert("You have already betted.. Please try in next turn");		
+				contractInstance.checkPlayerExists.call(web3.eth.accounts[0],function(err,res){
+
+					if(!err){
+
+						if(res===false){
+
+							contractInstance.bet(number,{from:web3.eth.accounts[0],value:amount,gas:3000000},function(err){
+							});
+
+						}else{
+
+							alert("You have already betted.. Please try in next round of game");								
+
+						}
+					}else{
+
+						console.log(err);
+
+					}
 
 				});
 
@@ -276,10 +339,25 @@ $('#num-5').click(function(){
 
 				let number=5;
 
-				contractInstance.bet(number,{from:web3.eth.accounts[0],value:amount,gas:3000000},function(err){
-					console.log(web3.eth.accounts[0]);
-					console.log("Error occured: "+err);
-					alert("You have already betted.. Please try in next turn");		
+				contractInstance.checkPlayerExists.call(web3.eth.accounts[0],function(err,res){
+
+					if(!err){
+
+						if(res===false){
+
+							contractInstance.bet(number,{from:web3.eth.accounts[0],value:amount,gas:3000000},function(err){
+							});
+
+						}else{
+
+							alert("You have already betted.. Please try in next round of game");								
+
+						}
+					}else{
+
+						console.log(err);
+
+					}
 
 				});
 
@@ -317,10 +395,25 @@ $('#num-6').click(function(){
 
 				let number=6;
 
-				contractInstance.bet(number,{from:web3.eth.accounts[0],value:amount,gas:3000000},function(err){
-					console.log(web3.eth.accounts[0]);
-					console.log("Error occured: "+err);
-					alert("You have already betted.. Please try in next turn");		
+				contractInstance.checkPlayerExists.call(web3.eth.accounts[0],function(err,res){
+
+					if(!err){
+
+						if(res===false){
+
+							contractInstance.bet(number,{from:web3.eth.accounts[0],value:amount,gas:3000000},function(err){
+							});
+
+						}else{
+
+							alert("You have already betted.. Please try in next round of game");								
+
+						}
+					}else{
+
+						console.log(err);
+
+					}
 
 				});
 
@@ -359,10 +452,25 @@ $('#num-7').click(function(){
 
 				let number=7;
 
-				contractInstance.bet(number,{from:web3.eth.accounts[0],value:amount,gas:3000000},function(err){
-					console.log(web3.eth.accounts[0]);
-					console.log("Error occured: "+err);
-					alert("You have already betted.. Please try in next turn");		
+				contractInstance.checkPlayerExists.call(web3.eth.accounts[0],function(err,res){
+
+					if(!err){
+
+						if(res===false){
+
+							contractInstance.bet(number,{from:web3.eth.accounts[0],value:amount,gas:3000000},function(err){
+							});
+
+						}else{
+
+							alert("You have already betted.. Please try in next round of game");								
+
+						}
+					}else{
+
+						console.log(err);
+
+					}
 
 				});
 
@@ -400,13 +508,27 @@ $('#num-8').click(function(){
 
 				let number=8;
 
-				contractInstance.bet(number,{from:web3.eth.accounts[0],value:amount,gas:3000000},function(err){
-					console.log(web3.eth.accounts[0]);
-					console.log("Error occured: "+err);
-					alert("You have already betted.. Please try in next turn");		
+				contractInstance.checkPlayerExists.call(web3.eth.accounts[0],function(err,res){
+
+					if(!err){
+
+						if(res===false){
+
+							contractInstance.bet(number,{from:web3.eth.accounts[0],value:amount,gas:3000000},function(err){
+							});
+
+						}else{
+
+							alert("You have already betted.. Please try in next round of game");								
+
+						}
+					}else{
+
+						console.log(err);
+
+					}
 
 				});
-
 			}
 
 		}
@@ -442,13 +564,27 @@ $('#num-9').click(function(){
 
 				let number=9;
 
-				contractInstance.bet(number,{from:web3.eth.accounts[0],value:amount,gas:3000000},function(err){
-					console.log(web3.eth.accounts[0]);
-					console.log("Error occured: "+err);
-					alert("You have already betted.. Please try in next turn");		
+				contractInstance.checkPlayerExists.call(web3.eth.accounts[0],function(err,res){
+
+					if(!err){
+
+						if(res===false){
+
+							contractInstance.bet(number,{from:web3.eth.accounts[0],value:amount,gas:3000000},function(err){
+							});
+
+						}else{
+
+							alert("You have already betted.. Please try in next round of game");								
+
+						}
+					}else{
+
+						console.log(err);
+
+					}
 
 				});
-
 			}
 
 		}
@@ -481,10 +617,25 @@ $('#num-10').click(function(){
 
 				let number=10;
 
-				contractInstance.bet(number,{from:web3.eth.accounts[0],value:amount,gas:3000000},function(err){
-					console.log(web3.eth.accounts[0]);
-					console.log("Error occured: "+err);
-					alert("You have already betted.. Please try in next turn");		
+				contractInstance.checkPlayerExists.call(web3.eth.accounts[0],function(err,res){
+
+					if(!err){
+
+						if(res===false){
+
+							contractInstance.bet(number,{from:web3.eth.accounts[0],value:amount,gas:3000000},function(err){
+							});
+
+						}else{
+
+							alert("You have already betted.. Please try in next round of game");								
+
+						}
+					}else{
+
+						console.log(err);
+
+					}
 
 				});
 
