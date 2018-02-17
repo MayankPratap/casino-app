@@ -19,7 +19,7 @@ $(document).ready(function(){
 	contractInstance=CasinoContract.at("0x6663B817d708BA00cE0c5bD71B9E60E9fC0C2650");
 
 	loadCurrentBetDetails();
-	let interval=setInterval(loadCurrentBetDetails,5000);
+	let interval=setInterval(loadCurrentBetDetails,10000);   // try updating every 10 seconds
 
 });
 
@@ -99,56 +99,63 @@ $('#num-1').click(function(){
 
 	console.log(amount);
 
-	amount=Number(web3.toWei(amount,'ether')); // take input from user in ether and convert it to Wei
+	if(web3.eth.accounts.length>0){
 
-	contractInstance.minimumBet.call(function(error,result){
+		amount=Number(web3.toWei(amount,'ether')); // take input from user in ether and convert it to Wei
 
-		if(error){
+		contractInstance.minimumBet.call(function(error,result){
 
-			console.log("error: "+error);
-		}else{
+			if(error){
 
-			let minimumBet=result;
-
-			if(amount<minimumBet){
-
-				alert('Please enter ether value greater than minimum bet');
-
+				console.log("error: "+error);
 			}else{
 
-				let number=1;
+				let minimumBet=result;
 
-				contractInstance.checkPlayerExists.call(web3.eth.accounts[0],function(err,res){
+				if(amount<minimumBet){
 
-					if(!err){
+					alert('Please enter ether value greater than minimum bet');
 
-						if(res===false){
+				}else{
 
-							contractInstance.bet(number,{from:web3.eth.accounts[0],value:amount,gas:3000000},function(err){
-							});
+					let number=1;
 
+					contractInstance.checkPlayerExists.call(web3.eth.accounts[0],function(err,res){
+
+						if(!err){
+
+							if(res===false){
+
+								contractInstance.bet(number,{from:web3.eth.accounts[0],value:amount,gas:3000000},function(err){
+								});
+
+							}else{
+
+								alert("You have already betted.. Please try in next round of game");								
+
+							}
 						}else{
 
-							alert("You have already betted.. Please try in next round of game");								
+							console.log(err);
 
 						}
-					}else{
 
-						console.log(err);
+					});
 
-					}
+					
 
-				});
-
-				
+				}
 
 			}
+			
 
-		}
-		
+		});
 
-	});
+	}else{
 
+		alert("Please login to your metamask ethereum account");
+
+	}
 	
 });
 
@@ -158,53 +165,59 @@ $('#num-2').click(function(){
 	console.log(amount);
 	amount=Number(web3.toWei(amount,'ether')); // take input from user in ether and convert it to Wei
 
-	contractInstance.minimumBet.call(function(error,result){
+	if(web3.eth.accounts.length>0){
 
-		if(error){
+		contractInstance.minimumBet.call(function(error,result){
 
-			console.log("error: "+error);
-		}else{
+			if(error){
 
-			let minimumBet=result;
-
-			if(amount<minimumBet){
-
-				alert('Please enter ether value greater than minimum bet');
-
+				console.log("error: "+error);
 			}else{
 
-				let number=2;
+				let minimumBet=result;
 
-				contractInstance.checkPlayerExists.call(web3.eth.accounts[0],function(err,res){
+				if(amount<minimumBet){
 
-					if(!err){
+					alert('Please enter ether value greater than minimum bet');
 
-						if(res===false){
+				}else{
 
-							contractInstance.bet(number,{from:web3.eth.accounts[0],value:amount,gas:3000000},function(err){
-							});
+					let number=2;
 
+					contractInstance.checkPlayerExists.call(web3.eth.accounts[0],function(err,res){
+
+						if(!err){
+
+							if(res===false){
+
+								contractInstance.bet(number,{from:web3.eth.accounts[0],value:amount,gas:3000000},function(err){
+								});
+
+							}else{
+
+								alert("You have already betted.. Please try in next round of game");								
+
+							}
 						}else{
 
-							alert("You have already betted.. Please try in next round of game");								
+							console.log(err);
 
 						}
-					}else{
 
-						console.log(err);
+					});
 
-					}
-
-				});
+				}
 
 			}
+			
 
-		}
+		});
+
+	}else{
+
+		alert("Please login to your metamask ethereum account");
+	}
 		
-
-	});
-	
-
 });
 
 $('#num-3').click(function(){
@@ -213,49 +226,57 @@ $('#num-3').click(function(){
 	console.log(amount);
 	amount=Number(web3.toWei(amount,'ether')); // take input from user in ether and convert it to Wei
 
-	contractInstance.minimumBet.call(function(error,result){
+	if(web3.eth.accounts.length>0){	
 
-		if(error){
+		contractInstance.minimumBet.call(function(error,result){
 
-			console.log("error: "+error);
-		}else{
+			if(error){
 
-			let minimumBet=result;
-
-			if(amount<minimumBet){
-
-				alert('Please enter ether value greater than minimum bet');
-
+				console.log("error: "+error);
 			}else{
 
-				let number=3;
+				let minimumBet=result;
 
-				contractInstance.checkPlayerExists.call(web3.eth.accounts[0],function(err,res){
+				if(amount<minimumBet){
 
-					if(!err){
+					alert('Please enter ether value greater than minimum bet');
 
-						if(res===false){
+				}else{
 
-							contractInstance.bet(number,{from:web3.eth.accounts[0],value:amount,gas:3000000},function(err){
-							});
+					let number=3;
 
+					contractInstance.checkPlayerExists.call(web3.eth.accounts[0],function(err,res){
+
+						if(!err){
+
+							if(res===false){
+
+								contractInstance.bet(number,{from:web3.eth.accounts[0],value:amount,gas:3000000},function(err){
+								});
+
+							}else{
+
+								alert("You have already betted.. Please try in next round of game");								
+
+							}
 						}else{
 
-							alert("You have already betted.. Please try in next round of game");								
+							console.log(err);
 
 						}
-					}else{
 
-						console.log(err);
+					});
 
-					}
-
-				});
-
+				}
 			}
-		}
-		
-	});
+			
+		});
+
+	}else{
+
+		alert("Please login to your metamask ethereum account");
+
+	}
 
 });
 
@@ -265,54 +286,59 @@ $('#num-4').click(function(){
 	console.log(amount);
 	amount=Number(web3.toWei(amount,'ether')); // take input from user in ether and convert it to Wei
 
+
+	if(web3.eth.accounts.length>0){		
 	
-	contractInstance.minimumBet.call(function(error,result){
+		contractInstance.minimumBet.call(function(error,result){
 
-		if(error){
+			if(error){
 
-			console.log("error: "+error);
-		}else{
-
-			let minimumBet=result;
-
-			if(amount<minimumBet){
-
-				alert('Please enter ether value greater than minimum bet');
-
+				console.log("error: "+error);
 			}else{
 
-				let number=4;
+				let minimumBet=result;
 
-				contractInstance.checkPlayerExists.call(web3.eth.accounts[0],function(err,res){
+				if(amount<minimumBet){
 
-					if(!err){
+					alert('Please enter ether value greater than minimum bet');
 
-						if(res===false){
+				}else{
 
-							contractInstance.bet(number,{from:web3.eth.accounts[0],value:amount,gas:3000000},function(err){
-							});
+					let number=4;
 
+					contractInstance.checkPlayerExists.call(web3.eth.accounts[0],function(err,res){
+
+						if(!err){
+
+							if(res===false){
+
+								contractInstance.bet(number,{from:web3.eth.accounts[0],value:amount,gas:3000000},function(err){
+								});
+
+							}else{
+
+								alert("You have already betted.. Please try in next round of game");								
+
+							}
 						}else{
 
-							alert("You have already betted.. Please try in next round of game");								
+							console.log(err);
 
 						}
-					}else{
 
-						console.log(err);
+					});
 
-					}
-
-				});
+				}
 
 			}
+			
 
-		}
-		
+		});
 
-	});
+	}else{
 
-
+		alert("Please login to your metamask ethereum account");		
+	}
 
 });
 
@@ -322,51 +348,59 @@ $('#num-5').click(function(){
 	console.log(amount);
 	amount=Number(web3.toWei(amount,'ether')); // take input from user in ether and convert it to Wei
 
-	contractInstance.minimumBet.call(function(error,result){
+	if(web3.eth.accounts.length>0){	
 
-		if(error){
+		contractInstance.minimumBet.call(function(error,result){
 
-			console.log("error: "+error);
-		}else{
+			if(error){
 
-			let minimumBet=result;
-
-			if(amount<minimumBet){
-
-				alert('Please enter ether value greater than minimum bet');
-
+				console.log("error: "+error);
 			}else{
 
-				let number=5;
+				let minimumBet=result;
 
-				contractInstance.checkPlayerExists.call(web3.eth.accounts[0],function(err,res){
+				if(amount<minimumBet){
 
-					if(!err){
+					alert('Please enter ether value greater than minimum bet');
 
-						if(res===false){
+				}else{
 
-							contractInstance.bet(number,{from:web3.eth.accounts[0],value:amount,gas:3000000},function(err){
-							});
+					let number=5;
 
+					contractInstance.checkPlayerExists.call(web3.eth.accounts[0],function(err,res){
+
+						if(!err){
+
+							if(res===false){
+
+								contractInstance.bet(number,{from:web3.eth.accounts[0],value:amount,gas:3000000},function(err){
+								});
+
+							}else{
+
+								alert("You have already betted.. Please try in next round of game");								
+
+							}
 						}else{
 
-							alert("You have already betted.. Please try in next round of game");								
+							console.log(err);
 
 						}
-					}else{
 
-						console.log(err);
+					});
 
-					}
-
-				});
+				}
 
 			}
+			
 
-		}
-		
+		});
 
-	});
+	}else{
+
+		alert("Please login to your metamask ethereum account");		
+
+	}
 
 
 });
@@ -378,52 +412,58 @@ $('#num-6').click(function(){
 	amount=Number(web3.toWei(amount,'ether')); // take input from user in ether and convert it to Wei
 
 
-	contractInstance.minimumBet.call(function(error,result){
+	if(web3.eth.accounts.length>0){		
+	
+		contractInstance.minimumBet.call(function(error,result){
 
-		if(error){
+			if(error){
 
-			console.log("error: "+error);
-		}else{
-
-			let minimumBet=result;
-
-			if(amount<minimumBet){
-
-				alert('Please enter ether value greater than minimum bet');
-
+				console.log("error: "+error);
 			}else{
 
-				let number=6;
+				let minimumBet=result;
 
-				contractInstance.checkPlayerExists.call(web3.eth.accounts[0],function(err,res){
+				if(amount<minimumBet){
 
-					if(!err){
+					alert('Please enter ether value greater than minimum bet');
 
-						if(res===false){
+				}else{
 
-							contractInstance.bet(number,{from:web3.eth.accounts[0],value:amount,gas:3000000},function(err){
-							});
+					let number=6;
 
+					contractInstance.checkPlayerExists.call(web3.eth.accounts[0],function(err,res){
+
+						if(!err){
+
+							if(res===false){
+
+								contractInstance.bet(number,{from:web3.eth.accounts[0],value:amount,gas:3000000},function(err){
+								});
+
+							}else{
+
+								alert("You have already betted.. Please try in next round of game");								
+
+							}
 						}else{
 
-							alert("You have already betted.. Please try in next round of game");								
+							console.log(err);
 
 						}
-					}else{
 
-						console.log(err);
+					});
 
-					}
-
-				});
+				}
 
 			}
+			
 
-		}
-		
+		});
 
-	});
+	}else{
 
+		alert("Please login to your metamask ethereum account");		
+	}
 
 
 });
@@ -435,52 +475,58 @@ $('#num-7').click(function(){
 	amount=Number(web3.toWei(amount,'ether')); // take input from user in ether and convert it to Wei
 
 	
-	contractInstance.minimumBet.call(function(error,result){
+	if(web3.eth.accounts.length>0){		
+	
+		contractInstance.minimumBet.call(function(error,result){
 
-		if(error){
+			if(error){
 
-			console.log("error: "+error);
-		}else{
-
-			let minimumBet=result;
-
-			if(amount<minimumBet){
-
-				alert('Please enter ether value greater than minimum bet');
-
+				console.log("error: "+error);
 			}else{
 
-				let number=7;
+				let minimumBet=result;
 
-				contractInstance.checkPlayerExists.call(web3.eth.accounts[0],function(err,res){
+				if(amount<minimumBet){
 
-					if(!err){
+					alert('Please enter ether value greater than minimum bet');
 
-						if(res===false){
+				}else{
 
-							contractInstance.bet(number,{from:web3.eth.accounts[0],value:amount,gas:3000000},function(err){
-							});
+					let number=7;
 
+					contractInstance.checkPlayerExists.call(web3.eth.accounts[0],function(err,res){
+
+						if(!err){
+
+							if(res===false){
+
+								contractInstance.bet(number,{from:web3.eth.accounts[0],value:amount,gas:3000000},function(err){
+								});
+
+							}else{
+
+								alert("You have already betted.. Please try in next round of game");								
+
+							}
 						}else{
 
-							alert("You have already betted.. Please try in next round of game");								
+							console.log(err);
 
 						}
-					}else{
 
-						console.log(err);
+					});
 
-					}
-
-				});
+				}
 
 			}
+			
 
-		}
-		
+		});
 
-	});
+	}else{
 
+		alert("Please login to your metamask ethereum account");		
+	}
 
 });
 
@@ -491,50 +537,58 @@ $('#num-8').click(function(){
 	amount=Number(web3.toWei(amount,'ether')); // take input from user in ether and convert it to Wei
 
 	
-	contractInstance.minimumBet.call(function(error,result){
+	if(web3.eth.accounts.length>0){		
+	
+		contractInstance.minimumBet.call(function(error,result){
 
-		if(error){
+			if(error){
 
-			console.log("error: "+error);
-		}else{
-
-			let minimumBet=result;
-
-			if(amount<minimumBet){
-
-				alert('Please enter ether value greater than minimum bet');
-
+				console.log("error: "+error);
 			}else{
 
-				let number=8;
+				let minimumBet=result;
 
-				contractInstance.checkPlayerExists.call(web3.eth.accounts[0],function(err,res){
+				if(amount<minimumBet){
 
-					if(!err){
+					alert('Please enter ether value greater than minimum bet');
 
-						if(res===false){
+				}else{
 
-							contractInstance.bet(number,{from:web3.eth.accounts[0],value:amount,gas:3000000},function(err){
-							});
+					let number=8;
 
+					contractInstance.checkPlayerExists.call(web3.eth.accounts[0],function(err,res){
+
+						if(!err){
+
+							if(res===false){
+
+								contractInstance.bet(number,{from:web3.eth.accounts[0],value:amount,gas:3000000},function(err){
+								});
+
+							}else{
+
+								alert("You have already betted.. Please try in next round of game");								
+
+							}
 						}else{
 
-							alert("You have already betted.. Please try in next round of game");								
+							console.log(err);
 
 						}
-					}else{
 
-						console.log(err);
+					});
 
-					}
+				}
 
-				});
 			}
+			
 
-		}
-		
+		});
 
-	});
+	}else{
+
+		alert("Please login to your metamask ethereum account");		
+	}
 
 
 
@@ -547,50 +601,58 @@ $('#num-9').click(function(){
 	console.log(amount);
 	amount=Number(web3.toWei(amount,'ether')); // take input from user in ether and convert it to Wei
 
-	contractInstance.minimumBet.call(function(error,result){
+	if(web3.eth.accounts.length>0){		
+	
+		contractInstance.minimumBet.call(function(error,result){
 
-		if(error){
+			if(error){
 
-			console.log("error: "+error);
-		}else{
-
-			let minimumBet=result;
-
-			if(amount<minimumBet){
-
-				alert('Please enter ether value greater than minimum bet');
-
+				console.log("error: "+error);
 			}else{
 
-				let number=9;
+				let minimumBet=result;
 
-				contractInstance.checkPlayerExists.call(web3.eth.accounts[0],function(err,res){
+				if(amount<minimumBet){
 
-					if(!err){
+					alert('Please enter ether value greater than minimum bet');
 
-						if(res===false){
+				}else{
 
-							contractInstance.bet(number,{from:web3.eth.accounts[0],value:amount,gas:3000000},function(err){
-							});
+					let number=9;
 
+					contractInstance.checkPlayerExists.call(web3.eth.accounts[0],function(err,res){
+
+						if(!err){
+
+							if(res===false){
+
+								contractInstance.bet(number,{from:web3.eth.accounts[0],value:amount,gas:3000000},function(err){
+								});
+
+							}else{
+
+								alert("You have already betted.. Please try in next round of game");								
+
+							}
 						}else{
 
-							alert("You have already betted.. Please try in next round of game");								
+							console.log(err);
 
 						}
-					}else{
 
-						console.log(err);
+					});
 
-					}
+				}
 
-				});
 			}
+			
 
-		}
-		
+		});
 
-	});
+	}else{
+
+		alert("Please login to your metamask ethereum account");		
+	}
 
 });
 
@@ -600,52 +662,58 @@ $('#num-10').click(function(){
 	console.log(amount);
 	amount=Number(web3.toWei(amount,'ether')); // take input from user in ether and convert it to Wei
 
-	contractInstance.minimumBet.call(function(error,result){
+	if(web3.eth.accounts.length>0){		
+	
+		contractInstance.minimumBet.call(function(error,result){
 
-		if(error){
+			if(error){
 
-			console.log("error: "+error);
-		}else{
-
-			let minimumBet=result;
-
-			if(amount<minimumBet){
-
-				alert('Please enter ether value greater than minimum bet');
-
+				console.log("error: "+error);
 			}else{
 
-				let number=10;
+				let minimumBet=result;
 
-				contractInstance.checkPlayerExists.call(web3.eth.accounts[0],function(err,res){
+				if(amount<minimumBet){
 
-					if(!err){
+					alert('Please enter ether value greater than minimum bet');
 
-						if(res===false){
+				}else{
 
-							contractInstance.bet(number,{from:web3.eth.accounts[0],value:amount,gas:3000000},function(err){
-							});
+					let number=10;
 
+					contractInstance.checkPlayerExists.call(web3.eth.accounts[0],function(err,res){
+
+						if(!err){
+
+							if(res===false){
+
+								contractInstance.bet(number,{from:web3.eth.accounts[0],value:amount,gas:3000000},function(err){
+								});
+
+							}else{
+
+								alert("You have already betted.. Please try in next round of game");								
+
+							}
 						}else{
 
-							alert("You have already betted.. Please try in next round of game");								
+							console.log(err);
 
 						}
-					}else{
 
-						console.log(err);
+					});
 
-					}
-
-				});
+				}
 
 			}
+			
 
-		}
-		
+		});
 
-	});
+	}else{
 
+		alert("Please login to your metamask ethereum account");		
+	}
 
 });
 
